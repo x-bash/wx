@@ -1,11 +1,16 @@
 # shellcheck shell=sh disable=SC3043 # xrc
 
+# x wx work
+# x wx --verbose work
+# x work.wx
+
 ___x_cmd_wx(){
     case "$1" in
         pkg)            ;;
         unpkg)          ;;
         run)            ;;
         ls)             ;;
+        *)              ;;
     esac
 }
 
