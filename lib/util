@@ -3,9 +3,10 @@ ___x_cmd_wx_run(){
     local wxfile="${1:?Provide wx file}"; shift
     local ___X_CMD_WX_RUN_OLD_PWD="$PWD"
 
-    ___x_cmd_wx_unpkg "$wxfile" || return
-    if ! cd "$___X_CMD_WX_UNPKG_DIR"; then
-        x:error "Cannot access folder: $___X_CMD_WX_UNPKG_DIR"
+    local ___X_CMD_WX_UNPKG_
+    ___x_cmd_wx_unpkg_ "$wxfile" || return
+    if ! cd "$___X_CMD_WX_UNPKG_"; then
+        x:error "Cannot access folder: $___X_CMD_WX_UNPKG_"
         return 1
     fi
 
@@ -26,8 +27,34 @@ ___x_cmd_wx_pkg(){
     fi
 }
 
-___x_cmd_wx_unpkg(){
-    :
+#
+
+___x_cmd_wx_unpkg_(){
+    local wxfile="${1:?Provide wx file}"; shift
+    if [ ! -f "$wxfile" ]; then
+        wxfile="$wxfile.wx"
+        if [ ! -f "$wxfile" ]; then
+            x:error "Exit=1 for ${wxfile#.wx} or $wxfile UNFOUND."
+            return 1
+        fi
+    fi
+
+    local md5sum
+    md5sum="$(x md5 "$wxfile")"
+    ___X_CMD_WX_UNPKG_="$___X_CMD_ROOT_TMP/wx/unpkg/${md5sum}"
+    [ ! -d "$___X_CMD_ROOT_TMP/wx/unpkg/${md5sum}" ] || return 0
+
+    if ! x ensuredir "$___X_CMD_ROOT_TMP/wx/unpkg"; then
+        x:error "Exit=1 for wx unpack depend on folder: $___X_CMD_WX_UNPKG_"
+        ___X_CMD_WX_UNPKG_=
+        return 1
+    fi
+
+    if ! tar xf "$wxfile" "$___X_CMD_WX_UNPKG_"; then
+        x:error "Exit=1 for failure on delation: $wxfile"
+        ___X_CMD_WX_UNPKG_=
+        return 1
+    fi
 }
 
 ___x_cmd_wx_ls(){
