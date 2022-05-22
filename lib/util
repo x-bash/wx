@@ -5,7 +5,7 @@ ___x_cmd_wx_run(){
 
 ___x_cmd_wx_pkg(){
     local name="${PWD##*/}"
-    tar cf "$name.wx.x-cmd" . --exclude "*.wx.x-cmd"
+    tar cf "$name.wx" . --exclude "*.wx"
 }
 
 ___x_cmd_wx_unpkg(){
