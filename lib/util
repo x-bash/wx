@@ -23,13 +23,11 @@ ___x_cmd_wx_run(){
 }
 
 ___x_cmd_wx_is_workspace(){
-    local workspace="${1:?Provide workspace}"
-    [ -d "$workspace/.x-cmd" ]
+    [ -d "${1:?Provide workspace}/.x-cmd" ]
 }
 
 ___x_cmd_wx_is_workspace_runnable(){
-    local workspace="${1:?Provide workspace}"
-    [ -f "$workspace/.x-cmd/run" ]
+    [ -f "${1:?Provide workspace}/.x-cmd/run" ]
 }
 
 ___x_cmd_wx_pkg(){
