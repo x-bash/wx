@@ -15,6 +15,13 @@ ___x_cmd_wx_run(){
         return 1
     fi
 
+    if [ -f ".x-cmd/is_installed" ] && ! x ws is_installed; then
+        x ws install || {
+            local exit=$?
+            x:error "Exit=$exit: installation failure."
+            return "$exit"
+        }
+    fi
     x ws run "$@"
 
     if ! cd "$___X_CMD_WX_RUN_OLD_PWD"; then
