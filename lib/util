@@ -74,6 +74,12 @@ ___x_cmd_wx_unpkg_(){
     fi
 }
 
+___x_cmd_wx_unpkg(){
+    local ___X_CMD_WX_UNPKG_
+    ___x_cmd_wx_unpkg_ "$@"
+    printf "%s\n" "$___X_CMD_WX_UNPKG_"
+}
+
 ___x_cmd_wx_ls(){
     :
 }
