@@ -1,5 +1,13 @@
 # shellcheck shell=sh disable=SC3043 # xrc
 
 ___x_cmd_wx(){
-
+    case "$1" in
+        pkg)            ;;
+        unpkg)          ;;
+        run)            ;;
+        ls)             ;;
+    esac
 }
+
+
+
