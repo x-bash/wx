@@ -1,8 +1,11 @@
 # shellcheck shell=sh disable=SC3043 # xrc
 
+# wx is a tar.gz file
 # x wx work
 # x wx --verbose work
 # x work.wx
+# x @l/work
+# xwx work
 
 ___x_cmd_wx(){
     case "$1" in
