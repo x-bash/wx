@@ -17,7 +17,6 @@ ___x_cmd_wx_run(){
 
     if [ -f ".x-cmd/dist-run" ]; then
         x ws run-dist "$@"
-        return
     else
         if [ -f ".x-cmd/installed_already" ] && ! x ws installed_already; then
             if ! x ws install; then
