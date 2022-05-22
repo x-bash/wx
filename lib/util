@@ -15,10 +15,10 @@ ___x_cmd_wx_run(){
         return 1
     fi
 
-    if [ -f ".x-cmd/is_installed" ] && ! x ws is_installed; then
+    if [ -f ".x-cmd/installed" ] && ! x ws installed; then
         x ws install || {
             local exit=$?
-            x:error "Exit=$exit: installation failure."
+            x:error "Exit=$exit: Installation failure."
             return "$exit"
         }
     fi
