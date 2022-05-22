@@ -22,6 +22,7 @@ ___x_cmd_wx_run(){
             return "$exit"
         }
     fi
+
     x ws run "$@"
 
     if ! cd "$___X_CMD_WX_RUN_OLD_PWD"; then
