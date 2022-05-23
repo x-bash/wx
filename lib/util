@@ -50,10 +50,10 @@ ___x_cmd_wx_pkg(){
     fi
 
     if [ -n "$2" ]; then
-        tar cf "$2" "$workspace" --exclude "$2"
+        tar czf "$2" "$workspace" --exclude "$2"
     else
         local name="${PWD##*/}"
-        tar cf "$name.wx" "$workspace" --exclude "*.wx"
+        tar czf "$name.wx" "$workspace" --exclude "*.wx"
     fi
 }
 
