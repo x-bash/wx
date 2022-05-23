@@ -15,18 +15,20 @@ ___x_cmd_wx_run(){
         return 1
     fi
 
-    if [ -f ".x-cmd/run-dist" ]; then
-        x ws run-dist "$@"
-    else
-        if [ -f ".x-cmd/installed_already" ] && ! x ws installed_already; then
-            if ! x ws install; then
-                local exit=$?
-                x:error "Exit=$exit: Installation failure."
-                return "$exit"
-            fi
-        fi
-        x ws run "$@"
-    fi
+    x ws run "$@"
+
+    # if [ -f ".x-cmd/run-dist" ]; then
+    #     x ws run-dist "$@"
+    # else
+    #     if [ -f ".x-cmd/installed_already" ] && ! x ws installed_already; then
+    #         if ! x ws install; then
+    #             local exit=$?
+    #             x:error "Exit=$exit: Installation failure."
+    #             return "$exit"
+    #         fi
+    #     fi
+    #     x ws run "$@"
+    # fi
 
     if ! cd "$___X_CMD_WX_RUN_OLD_PWD"; then
         x:error "Cannot return to original folder: $___X_CMD_WX_RUN_OLD_PWD"
