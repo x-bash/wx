@@ -1,3 +1,4 @@
+# shellcheck shell=sh disable=SC3043
 
 ___x_cmd_wx_run(){
     local wxfile="${1:-.}"; shift
@@ -94,5 +95,3 @@ ___x_cmd_wx_unpkg(){
 ___x_cmd_wx_ls(){
     :
 }
-
-
