@@ -47,15 +47,16 @@ ___x_cmd_wx_is_workspace_runnable(){
 ___x_cmd_wx_pkg(){
     local workspace="${1:-.}"
     if ! ___x_cmd_wx_is_workspace_runnable "$workspace"; then
+        x:error "Workspace is not runnable: $workspace | PWD: $PWD"
         return 1
     fi
 
-    if [ -n "$2" ]; then
-        tar czf "$2" "$workspace" --exclude "$2"
-    else
-        local name="${PWD##*/}"
-        tar czf "$name.wx" "$workspace" --exclude "*.wx"
-    fi
+    local target="${2:-${PWD##*/}.wx}"
+    # https://stackoverflow.com/questions/984204/shell-command-to-tar-directory-excluding-certain-files-folders
+    # https://unix.stackexchange.com/questions/59243/tar-removing-leading-from-member-names
+    local cmd="tar --exclude=$target -czf $target $workspace"
+    eval "$cmd"
+    x:debug "Created tar: $cmd"
 }
 
 ___x_cmd_wx_unpkg_(){
