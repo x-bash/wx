@@ -1,7 +1,7 @@
 # shellcheck shell=sh disable=SC3043
 
 ___x_cmd_wx_run(){
-    local wxfile="${1:-.}"; shift
+    local wxfile="${1:-.}"; [ "$#" -eq 0 ] || shift
     local ___X_CMD_WX_UNPKG_
     if [ -d "$wxfile" ]; then
         ___X_CMD_WX_UNPKG_="$wxfile"
