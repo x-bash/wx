@@ -16,9 +16,11 @@ test_run(){
         x wx run
         x wx run wx.wx
         x wx run @padpar/script/demo.wx
+        x wx @padpar/script/demo.wx
     )" <<A
 Hello WX !!!
 Hello WX !!!
+Hello Hub by wx !!!
 Hello Hub by wx !!!
 A
 }
