@@ -4,7 +4,7 @@ ___x_cmd_wx_run(){
     local wxfile="${1:-.}"; [ "$#" -eq 0 ] || shift
 
     case "$wxfile" in
-        @me/*|@i/*|@/*|@*/*) wxfile="$(x hub file which script/demo.wx)"
+        @me/*|@i/*|@/*|@*/*) wxfile="$(x hub file which script/demo.wx)" || return 1 ;;
     esac
 
     local ___X_CMD_WX_UNPKG_
