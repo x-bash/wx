@@ -1,8 +1,0 @@
-# shellcheck shell=sh disable=SC1072,SC3043 #source
-
-test_pkg(){
-    @assert true '(cd "$(x wsroot)" && x wx pkg)'
-    @assert true '(cd "$(x wsroot)" && x wx pkg . test.tar.gz)'
-}
-
-@assert:file:func

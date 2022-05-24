@@ -1,0 +1,22 @@
+# shellcheck shell=sh disable=SC1072,SC3043 #source
+
+test_pkg(){
+    @assert true "(cd $(x wsroot) && x wx pkg)"
+    @assert true "(cd $(x wsroot) && x wx pkg . test.tar.gz)"
+}
+
+test_unpkg(){
+    @assert "$(cd "$(x wsroot)" && x wx unpkg wx.wx)" "=~" "$HOME/.x-cmd/.tmp/wx/unpkg/[a-z0-9]*"
+}
+
+test_run(){
+    @assert stdout "(cd $(x wsroot) && x wx run)" <<A
+Hello WX !!!
+A
+
+    @assert stdout "(cd $(x wsroot) && x wx run wx.wx)" <<A
+Hello WX !!!
+A
+}
+
+@assert:file:func
