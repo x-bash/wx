@@ -2,6 +2,11 @@
 
 ___x_cmd_wx_run(){
     local wxfile="${1:-.}"; [ "$#" -eq 0 ] || shift
+
+    case "$wxfile" in
+        @me/*|@i/*|@/*|@*/*) wxfile="$(x hub file which script/demo.wx)"
+    esac
+
     local ___X_CMD_WX_UNPKG_
     if [ -d "$wxfile" ]; then
         ___X_CMD_WX_UNPKG_="$wxfile"

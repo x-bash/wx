@@ -10,12 +10,16 @@ test_unpkg(){
 }
 
 test_run(){
-    @assert stdout "(cd $(x wsroot) && x wx run)" <<A
+    # TODO: to make @padpar/script/demo.wx public.
+    @assert stdout "(
+        cd $(x wsroot)
+        x wx run
+        x wx run wx.wx
+        x wx run @padpar/script/demo.wx
+    )" <<A
 Hello WX !!!
-A
-
-    @assert stdout "(cd $(x wsroot) && x wx run wx.wx)" <<A
 Hello WX !!!
+Hello Hub by wx !!!
 A
 }
 
