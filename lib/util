@@ -22,7 +22,7 @@ ___x_cmd_wx_run(){
     fi
 
     # TODO: To use no shift at ws module.
-    x ws run run "$@"
+    x ws execfile run "$@"
 
     # if [ -f ".x-cmd/run-dist" ]; then
     #     x ws run-dist "$@"
