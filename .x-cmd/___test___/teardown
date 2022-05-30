@@ -1,1 +1,1 @@
-cd "$(x wsroot)" && rm -rf test.tar.gz wx.wx
+cd "$(x wsroot)" && rm -rf test.wx wx.wx

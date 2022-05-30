@@ -2,7 +2,7 @@
 
 test_pkg(){
     @assert true "(cd $(x wsroot) && x wx pkg)"
-    @assert true "(cd $(x wsroot) && x wx pkg . test.tar.gz)"
+    @assert true "(cd $(x wsroot) && x wx pkg . test.wx)"
 }
 
 test_unpkg(){
@@ -14,14 +14,12 @@ test_run(){
     @assert stdout "(
         cd $(x wsroot)
         x wx run
-        x wx run wx.wx
-        x wx run @padpar/script/demo.wx
-        x wx @padpar/script/demo.wx
+        x wx run test.wx
+        # x wx run @padpar/script/demo.wx
+        # x wx @padpar/script/demo.wx
     )" <<A
 Hello WX !!!
 Hello WX !!!
-Hello Hub by wx !!!
-Hello Hub by wx !!!
 A
 }
 
